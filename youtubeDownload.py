@@ -14,7 +14,7 @@ selected_val=int(input("""
     Select the Option
     1 -- Download Video With Different Formats
     2 -- Download Audio Only                       
-                       """))
+"""))
 titile = (subprocess.check_output(
     command_title.split()).decode('utf-8')).split("\n")
 if selected_val==1:
