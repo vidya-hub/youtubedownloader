@@ -1,6 +1,15 @@
+from posixpath import split
 import subprocess
+import os
+def newestFile(path):
+    files = os.listdir(path)
+    paths = [os.path.join(path, basename) for basename in files]
+    return max(paths, key=os.path.getctime)
+# print(newest("./"))
 
 print(" Youtube Downloader ")
+
+
 
 inputUrl = input("    Enter Video Url:   ")
 command_title = f"youtube-dl -e {inputUrl}"
@@ -35,3 +44,17 @@ if selected_val == 1:
 elif selected_val == 2:
     print("Downloading Audio......")
     print(subprocess.run(f"youtube-dl -f bestaudio {inputUrl}".split()))
+    
+    print(newestFile("./").split(".webm")[0]+".mp3")
+    os.rename(newestFile("./"),newestFile("./").split(".webm")[0]+".mp3")
+    
+    # latestfilename=newestFile("./")
+    # splittedName=latestfilename.split(".")[0]+".mp3"
+    # # mp3ConvFilename=sp
+    # print(splittedName)
+    
+    
+
+    
+   
+   
